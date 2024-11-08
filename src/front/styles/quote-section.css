@@ -1,0 +1,27 @@
+section.quote-section {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.quote-content {
+    font-size: 1rem;
+    margin: auto;
+    padding-top: 25px;
+    width: 70%;
+    padding-bottom: 15px;
+}
+
+h3.author {
+    padding-bottom: 25px;
+    font-size: 1.2rem;
+    margin-bottom: 0
+}
+
+@media (width <= 1000px) {  /* de aqui para abajo con hamburguesa */
+
+    .quote-content {
+        width: 90%;
+    }
+}
+

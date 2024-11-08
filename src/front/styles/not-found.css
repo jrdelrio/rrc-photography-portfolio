@@ -1,0 +1,57 @@
+:root {
+    --color-gray-light: #ABAFB1;
+    --color-gray-dark: #5E6366;
+    --color-bg: #dcdcdc;
+}
+
+#not-found {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: var(--color-bg);
+}
+
+#not-found header {
+    position: relative;
+    height: 25vh;
+    background-image: url(../img/details\ of\ the\ coast-21.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+#not-found header h1 {
+    color: var(--color-white);
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
+    margin-left: 100px;
+}
+
+#not-found main {
+    margin-left: 100px;
+    justify-content: space-between;
+}
+
+#not-found main a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: var(--color-gray-light);
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#not-found main a:hover {
+    background-color: var(--color-gray-dark);
+    color: var(--color-white)
+}
+
+#not-found main a:first-child {
+    margin-top: 50px;
+}

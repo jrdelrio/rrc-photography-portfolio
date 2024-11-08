@@ -1,0 +1,23 @@
+.hamburger-icon {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    border: black solid 2px;
+    border-radius: 5px;
+    padding: 4px;
+    scale: 2;
+    z-index: 100;
+    cursor: pointer;
+    display: none;
+}
+
+@media (width <= 1100px) {
+   
+}
+
+
+@media (width <= 830px) { 
+    .hamburger-icon {
+        display: block;
+    }
+}

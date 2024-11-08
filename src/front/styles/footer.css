@@ -1,0 +1,59 @@
+:root {
+    --color-background: #1a1a1a
+}
+
+
+footer.footer {
+    background-color: var(--color-background);
+    color: #ffffff50;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-credits {
+    display: block;
+}
+
+.logo-credits * {
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.footer .footer-links {
+    text-align: end;
+    margin-right: 45px;
+    position: relative;
+}
+
+.footer-links {
+    align-content: end;
+}
+
+.footer-links svg {
+    margin-bottom: 30px;
+}
+
+.footer-links svg:hover {
+    scale: 1.2;
+}
+
+.footer .footer-links div {
+    position: absolute;
+    bottom: 25%;
+    right: 40px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.footer .footer-links i {
+    color: white;
+    scale: 2;
+    margin-right: 8px;
+}
+
+.footer .footer-links p {
+    font-size: 14px;
+    
+}

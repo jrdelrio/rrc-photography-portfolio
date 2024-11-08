@@ -1,0 +1,34 @@
+.carousel-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 8%;
+    height: 250px;
+}
+
+.carousel-caption h3 {
+    font-size: 45px;
+}
+
+.carousel-caption a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    border: 2px white solid;
+    padding: 15px 70px;
+    margin-top: 20px;   
+}
+
+
+@media (width <= 1000px) { 
+    
+}
+

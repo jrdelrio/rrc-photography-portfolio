@@ -1,0 +1,20 @@
+/* Estilos para enlaces */
+
+.carousel-caption a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    border: 2px white solid;
+    padding: 12px 60px;
+    display: inline-block;
+    margin-top: 20px;
+    position: relative;
+}
+
+
+
+@media (width <=500px) {
+    .carousel-caption a {
+        font-size: 1rem;
+    }
+}
