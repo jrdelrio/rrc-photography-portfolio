@@ -83,14 +83,19 @@ section#section-contact main {
     border-color: var(--color-gray-light);
 }
 
-.contact-container form div input,
-.contact-container form div textarea {
+.contact-container form div input {
     position: relative;
     padding-top: 18px;
 }
 
-.contact-container form input::placeholder,
-.contact-container form textarea::placeholder {
+.contact-container form div textarea {
+    padding-top: 25px;
+    padding-left: 20px;
+    height: 120px;
+}
+
+.contact-container form div.form-field input::placeholder,
+.contact-container form div.form-field textarea::placeholder {
     color: var(--color-gray-light);
     position: absolute;
     top: 26px;

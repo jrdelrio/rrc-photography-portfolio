@@ -59,7 +59,7 @@ div.grid-item:hover .gallery-cover-title {
     top: 55%;
     left: 50%; 
     transform: translate(-50%, -180%);
-    transition: transform .8s ease;
+    transition: transform .7s ease;
 }
 
 /* boton ver galeria */
@@ -72,19 +72,21 @@ div.grid-item a {
     z-index: 3; /* Asegura que el enlace esté sobre la imagen y el overlay */
     color: white !important;
     font-size: 1.2em;
-    background-color: transparent; /* Fondo semi-transparente */
+    background-color: transparent;
     border: 1px solid #fff;
     padding: 5px 16px;
-    border-radius: 4px;
     text-decoration: none;
-    transition: opacity 1s ease-in;
+    text-transform: uppercase;
+    width: 60%;
+    text-align: center;
 }
 
 /* div.grid-item:last-child a {
     display: none;
-} */
-
-div.grid-item:hover a {
+    } */
+    
+    div.grid-item:hover a {
+    transition: opacity .5s ease-in;
     opacity: 1;
     z-index: 4;
 }

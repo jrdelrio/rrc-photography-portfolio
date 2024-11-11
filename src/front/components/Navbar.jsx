@@ -7,6 +7,18 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
     const { store, actions } = useContext(AppContext);
+    const textContent = {
+        en: {
+            linkGalleries: 'Galleries',
+            linkAboutMe: 'About me',
+            linkContact: 'Contact'
+        },
+        es: {
+            linkGalleries: 'Galerías',
+            linkAboutMe: 'Sobre mí',
+            linkContact: 'Contacto'
+        }
+    }
 
     const [hideNavbar, setHideNavbar] = useState(false);
     const [secondaryNavbar, setSecondaryNavbar] = useState(store.showResponsiveNavbar);
@@ -30,14 +42,16 @@ const Navbar = () => {
         }
     };
 
+    const languageContent = textContent[store.language] || textContent.en;
+
 
     return (
         <>
             <nav className={`main-navbar ${hideNavbar ? 'hidden' : ''}`}>
                 <ul>
-                    <li><Link to="/">Galerias</Link></li>
-                    <li><Link to="/about">Sobre mí</Link></li>
-                    <li><Link to="/contact">Contacto</Link></li>
+                    <li><Link to="/">{languageContent.linkGalleries}</Link></li>
+                    <li><Link to="/about">{languageContent.linkAboutMe}</Link></li>
+                    <li><Link to="/contact">{languageContent.linkContact}</Link></li>
                 </ul>
             </nav>
 

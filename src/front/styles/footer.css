@@ -1,5 +1,6 @@
 :root {
-    --color-background: #1a1a1a
+    --color-background: #1a1a1a;
+    --color-footer-text: #ffffff50;
 }
 
 
@@ -34,7 +35,7 @@ footer.footer {
 }
 
 .footer-links svg:hover {
-    scale: 1.2;
+    scale: 1.1;
 }
 
 .footer .footer-links div {
@@ -55,5 +56,8 @@ footer.footer {
 
 .footer .footer-links p {
     font-size: 14px;
-    
+}
+
+.footer .footer-links a {
+    color: var(--color-footer-text);
 }

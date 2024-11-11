@@ -1,5 +1,9 @@
+:root {
+    --color-bg-section-quote: #212121;
+}
+
 section.quote-section {
-    background-color: black;
+    background-color: var(--color-bg-section-quote);
     color: white;
     text-align: center;
 }
