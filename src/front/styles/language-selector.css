@@ -1,0 +1,98 @@
+.toggle-wrapper {
+    position: absolute;
+    z-index: 1000;
+    right: 80px;
+    top: 35px;
+}
+
+input {
+    display: none;
+}
+
+.switch {
+    position: relative;
+    width: 90px;
+    height: 40px;
+    border-radius: 50px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+    display: flex;
+    /* align-content: center; */
+    align-items: center;
+    cursor: pointer;
+}
+
+.indicator {
+    position: absolute;
+    width: 45%;
+    height: 75%;
+    /* box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6),
+        inset 0 0 3px 2px rgba(0, 0, 0, 0.6),
+        inset 0 0 2px 2px rgba(100, 100, 100, 0.6); */
+    transition: all .6s ease;
+}
+
+.indicator.left {
+    left: 10%;
+    /* background: linear-gradient(180deg,
+            hsl(35deg 95% 80%) 10%,
+            hsl(35deg 100% 60%) 30%,
+            hsl(25deg 90% 50%) 60%,
+            hsl(25deg 90% 60%) 75%,
+            hsl(25deg 90% 50%) 100%); */
+    background-image: url(../img/es-flag.jpg);
+    background-size: cover;
+    border-radius: 50px 0 0 50px;
+    background-repeat: no-repeat;
+}
+
+.indicator.right {
+    right: 6%;
+    width: 40%;
+    /* background: linear-gradient(180deg,
+            hsl(220deg 20% 95%),
+            hsl(220deg 20% 65%) 60%,
+            hsl(220deg 20% 70%) 70%,
+            hsl(220deg 20% 65%)); */
+    background-image: url(../img/en-flag.png);
+    background-size: cover;
+    border-radius: 0 50px 50px 0;
+    background-repeat: no-repeat;
+}
+
+.button {
+    position: absolute;
+    width: 50%;
+    height: 80%;
+    background: linear-gradient(160deg,
+            hsl(220deg 20% 95%) 40%,
+            hsl(220deg 20% 65%) 70%);
+    border-radius: 50px;
+    /* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3),
+        10px 20px 10px rgba(0, 0, 0, 0.2),
+        20px 30px 30px rgba(0, 0, 0, 0.1); */
+    transition: all .6s ease;
+    left: 5%;
+}
+
+input:checked ~.button{
+    left: 45%;
+}
+
+input:not(:checked)~.indicator.left,
+input:checked~.indicator.right {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 1),
+        inset 20px 20px 10px rgba(0, 0, 0, 1),
+        inset 20px 20px 15px rgba(100, 100, 100, 1);
+}
+
+input:checked~.indicator.left {
+    width: 60%;
+    background-size: contain;
+}
+
+input:not(:checked)~.indicator.right {
+    width: 60%;
+    background-size: cover;
+    background-position: center;
+}

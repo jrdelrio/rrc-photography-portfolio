@@ -5,15 +5,17 @@ import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import { QuoteSection } from "../components/SectionQuote";
 import { SectionGalleries } from "../components/SectionGaleries";
 import { Footer } from "../components/Footer";
+import { LanguageToggler } from "../components/LanguageToggler";
 
 
 const Home = () => {
     return (
         <>
             <header>
-                <Navbar />
-
                 <MainLogoVectorWhite />
+                <Navbar />
+                <LanguageToggler />
+
                 <HomeCarousel />
                 {/* <Navbar /> */}
             </header>
