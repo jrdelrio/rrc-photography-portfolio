@@ -7,7 +7,7 @@ import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import Navbar from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { AppContext } from "../store/appContext";
-
+import { LanguageToggler } from "../components/LanguageToggler";
 
 export const About = () => {
     const { store, actions } = useContext(AppContext);
@@ -35,6 +35,7 @@ export const About = () => {
     return (
         <section id="about-me">
             <Navbar />
+            <LanguageToggler />
             <header>
                 <Link to="/"><MainLogoVectorWhite /></Link>
                 <h1 className="palanquin-dark-bold">{languageContent.title}</h1>

@@ -4,19 +4,20 @@ import { Link } from "react-router-dom";
 import "../styles/not-found.css";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import { Footer } from "../components/Footer";
+import cameraIcon from "../img/camera-icon.png";
 
 export const NotFound = () => {
 
     const { store } = useContext(AppContext);
     const textContent = {
         en: {
-            message: 'Oops! You seem to be lost.',
+            message: "This page doesn't exist in Raimundo del Rio's portfolio.",
             linkGalleries: 'Galleries',
             linkAboutMe: 'About me',
             linkContact: 'Contact'
         },
         es: {
-            message: 'Uups! Parece que te has perdido.',
+            message: 'Esta página no existe en el portafolio de Raimundo del Rio.',
             linkGalleries: 'Galerías',
             linkAboutMe: 'Sobre mí',
             linkContact: 'Contacto'
@@ -40,7 +41,7 @@ export const NotFound = () => {
                     <Link to='/contact'>{languageContent.linkContact}</Link>
                 </div>
                 <div>
-
+                    <img src={cameraIcon} />
                 </div>
             </main>
             <Footer />

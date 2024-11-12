@@ -5,6 +5,7 @@ import { SingleImageModal } from "../components/SingleImageModal";
 import "../styles/gallery.css";
 import { pulsar } from 'ldrs';
 import { GallerySinglePhoto } from "../components/GallerySinglePhoto";
+import Navbar from "../components/Navbar";
 
 export const Gallery = () => {
     const { str } = useParams();
@@ -57,6 +58,7 @@ export const Gallery = () => {
         <>
             <SingleImageModal />
             <section id="galleryView">
+                <Navbar />
                 <header style={{ backgroundImage: `url(${galleryCoverUrl})` }}>
                     <Link to="/"><MainLogoVectorWhite /></Link>
                     <h1 className="palanquin-dark-bold">Gallery: {styledName}</h1>

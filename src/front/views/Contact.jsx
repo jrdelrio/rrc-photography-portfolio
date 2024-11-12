@@ -7,6 +7,7 @@ import { IconBackArrow } from "../components/IconBackArrow";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { LanguageToggler } from "../components/LanguageToggler";
 
 
 import emailjs from "emailjs-com";
@@ -135,6 +136,7 @@ export const Contact = () => {
     return (
         <section id="section-contact">
             <Navbar />
+            <LanguageToggler />
             <header>
                 <div className="header-header">
                     <Link to="/"><MainLogoVectorWhite /></Link>
