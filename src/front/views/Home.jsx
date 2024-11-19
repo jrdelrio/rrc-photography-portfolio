@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeCarousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
@@ -7,8 +7,17 @@ import { SectionGalleries } from "../components/SectionGaleries";
 import { Footer } from "../components/Footer";
 import { LanguageToggler } from "../components/LanguageToggler";
 
+import { useScrollToId } from "../hooks/useScrollToId"
+
 
 const Home = () => {
+
+    const scrollToId = useScrollToId();
+
+    useEffect(() => {
+        scrollToId("section-galleries");
+    }, [])
+
     return (
         <>
             <header>
@@ -17,7 +26,6 @@ const Home = () => {
                 <LanguageToggler />
 
                 <HomeCarousel />
-                {/* <Navbar /> */}
             </header>
             <main>
                 <QuoteSection />

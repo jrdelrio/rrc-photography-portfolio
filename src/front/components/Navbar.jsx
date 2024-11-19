@@ -49,7 +49,7 @@ const Navbar = () => {
         <>
             <nav className={`main-navbar ${hideNavbar ? 'hidden' : ''}`}>
                 <ul>
-                    <li><Link to="/">{languageContent.linkGalleries}</Link></li>
+                    <li><Link to="/#section-galleries">{languageContent.linkGalleries}</Link></li>
                     <li><Link to="/about">{languageContent.linkAboutMe}</Link></li>
                     <li><Link to="/contact">{languageContent.linkContact}</Link></li>
                 </ul>

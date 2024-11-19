@@ -54,7 +54,7 @@ input {
             hsl(220deg 20% 65%) 60%,
             hsl(220deg 20% 70%) 70%,
             hsl(220deg 20% 65%)); */
-    background-image: url(../img/en-flag.png);
+    background-image: url(../img/usa-flag.jpg);
     background-size: cover;
     border-radius: 0 50px 50px 0;
     background-repeat: no-repeat;

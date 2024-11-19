@@ -27,7 +27,8 @@
 #galleryView main {
     background-color: var(--color-main-bg);
     padding: 30px 20px;
-    padding-bottom: 0;
+    padding-bottom: 20px;
+
 }
 
 .masonry {

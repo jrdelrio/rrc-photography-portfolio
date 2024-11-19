@@ -106,12 +106,12 @@ def get_all_photos():
         cursor.execute('SELECT * FROM photos;')
         
         respuesta = cursor.fetchall()
-        print("Respuesta completa:", respuesta)
+        # print("Respuesta completa:", respuesta)
 
         
         for row in respuesta:
             print('entrando al loop')
-            print(row)
+            # print(row)
         
         # Convertimos cada registro en un diccionario con las keys esperadas
         photos = [
@@ -149,7 +149,7 @@ def get_photos_from_gallery(gallery_name):
                         ''')
         
         respuesta = cursor.fetchall()
-        print("Respuesta completa:", respuesta)
+        # print("Respuesta completa:", respuesta)
         
         return_json = {"cover_photo": respuesta[0][2]}
 

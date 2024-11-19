@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
-import { SingleImageModal } from "../components/SingleImageModal";
 import "../styles/gallery.css";
 import { pulsar } from 'ldrs';
-import { GallerySinglePhoto } from "../components/GallerySinglePhoto";
+// import { GallerySinglePhoto } from "../components/GallerySinglePhoto";
 import Navbar from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import { SinglePhotoView } from "./SinglePhotoView";
+import { SpinnerPulsar } from "../components/SpinnerPulsar";
+import { CloseButton } from "react-bootstrap";
+
+const GallerySinglePhoto = lazy(() => import('../components/GallerySinglePhoto.jsx'));
 
 export const Gallery = () => {
     const { str } = useParams();
     const [styledName, setStyledName] = useState(str);
-
-    const [galleryName, setGalleryName] = useState(undefined);
     const [galleryImages, setGalleryImages] = useState([]);
     const [galleryCoverUrl, setGalleryCoverUrl] = useState('')
+    const [selectedPhoto, setSelectedPhoto] = useState(null);
+
 
     const apiBaseUrl = 'http://127.0.0.1:5000';
 
@@ -25,7 +30,7 @@ export const Gallery = () => {
                 setGalleryCoverUrl(result.cover_photo);
             })
             .catch((error) => console.error("Error fetching galleries:", error));
-    }, [apiBaseUrl]);
+    }, []);
 
     useEffect(() => {
         styler(str);
@@ -52,11 +57,16 @@ export const Gallery = () => {
         setStyledName(names[name] || name.charAt(0).toUpperCase() + name.slice(1));
     };
 
-    pulsar.register()
+    const handleClick = (photo) => {
+        setSelectedPhoto(photo);
+    };
+
+    const closeModal = () => {
+        setSelectedPhoto(null); // Limpia la foto seleccionada para cerrar la modal
+    };
 
     return (
         <>
-            <SingleImageModal />
             <section id="galleryView">
                 <Navbar />
                 <header style={{ backgroundImage: `url(${galleryCoverUrl})` }}>
@@ -64,20 +74,27 @@ export const Gallery = () => {
                     <h1 className="palanquin-dark-bold">Gallery: {styledName}</h1>
                 </header>
                 <main>
+
                     <div className="masonry">
-                        {galleryImages ? (galleryImages.map((photo, index) => (
-                            <GallerySinglePhoto index={index} photo={photo} str={str} />
-                        ))
-                        ) : (
-                            <l-pulsar
-                                size="40"
-                                speed="1.75"
-                                color="black"
-                            ></l-pulsar>
-                        )}
+                        {galleryImages.map((photo, index) => (
+                            <div onClick={() => handleClick(photo)} key={index}>
+                                <Suspense fallback={<SpinnerPulsar color="#B7B7B7" />}>
+                                    <GallerySinglePhoto
+                                        index={index}
+                                        photo={photo}
+                                        str={str}
+                                    />
+                                </Suspense>
+                            </div>
+                        ))}
                     </div>
                 </main>
             </section>
+
+            {selectedPhoto && (
+                <SinglePhotoView photo={selectedPhoto} closeModal={closeModal} />
+            )}
+            <Footer />
         </>
     );
 };
