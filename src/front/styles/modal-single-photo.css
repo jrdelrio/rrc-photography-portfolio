@@ -43,17 +43,14 @@ dialog.singlePhotoView span {
 }
 
 .singlePhotoView .parent-button {
-    background-color: #ffffff28;
+    background-color: #ffffff39;
     padding: 7px;
-    border: none;
     border-radius: 50%;
-    transition: border-radius .5s ease, background-color .5s ease-in-out;
+    border: none;
 }
 
 .singlePhotoView .parent-button:hover {
-    background-color: #ffffff54;
-    border-radius: 40%;
-    transition: border-radius .5s ease, background-color .5s ease-in-out;
+    background-color: #ffffff14;
 }
 
 .singlePhotoView button {

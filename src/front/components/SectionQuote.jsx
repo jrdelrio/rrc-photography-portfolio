@@ -18,10 +18,10 @@ export const QuoteSection = () => {
 
     return (
         <section className="quote-section">
-            <p className="quote-content just-another-hand-regular">
+            <p className="quote-content shadows-into-light-regular">
                 {languageContent.quote}
             </p>
-            <h3 className="author just-another-hand-regular">
+            <h3 className="author palanquin-dark-medium">
                 Raimundo del Rio Covarrubias
             </h3>
         </section>

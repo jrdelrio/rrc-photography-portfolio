@@ -24,8 +24,9 @@ export const Contact = () => {
     });
 
     const handleChange = (event) => {
-        const { key, value } = event.target;
-        setFormData({ ...formData, [key]: value });
+        console.log(event.target);
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = (event) => {
@@ -155,6 +156,7 @@ export const Contact = () => {
                                 name="name"
                                 placeholder={languageContent.namePlaceholder}
                                 value={formData.name}
+                                onChange={handleChange}
                                 required />
                         </div>
 
@@ -165,6 +167,7 @@ export const Contact = () => {
                                 name="email"
                                 placeholder={languageContent.emailPlaceholder}
                                 value={formData.email}
+                                onChange={handleChange}
                                 required />
                         </div>
 
@@ -175,6 +178,7 @@ export const Contact = () => {
                                 name="number"
                                 placeholder={languageContent.phonePlaceholder}
                                 value={formData.phone}
+                                onChange={handleChange}
                                 required />
                         </div>
 
@@ -184,6 +188,7 @@ export const Contact = () => {
                                 name="message"
                                 placeholder={languageContent.messagePlaceholder}
                                 value={formData.message}
+                                onChange={handleChange}
                                 required>
                             </textarea>
                         </div>

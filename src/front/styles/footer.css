@@ -54,8 +54,12 @@ footer.footer {
     margin-right: 8px;
 }
 
-.footer .footer-links p {
+.footer .footer-links p,
+.footer .footer-links p a
+ {
     font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .footer .footer-links a {

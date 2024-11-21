@@ -36,7 +36,7 @@ export const Footer = () => {
 
             <div className="footer-links">
                 <a href={instaProfileLInk} target="_blank"><IconInsta color='#ffffff' height='40px' /></a>
-                <p>{languageContent.creators} <a href="https://chilisites.com/">chiliSites®</a></p>
+                <p>{languageContent.creators} <a href="https://chilisites.com/">🌶️chiliSites®</a></p>
             </div>
         </footer>
     )

@@ -14,9 +14,10 @@ input {
     width: 90px;
     height: 40px;
     border-radius: 50px;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
-        inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+    /* box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.7); */
     display: flex;
+    border: none;
     /* align-content: center; */
     align-items: center;
     cursor: pointer;
@@ -75,7 +76,7 @@ input {
     left: 5%;
 }
 
-input:checked ~.button{
+input:checked~.button {
     left: 45%;
 }
 
