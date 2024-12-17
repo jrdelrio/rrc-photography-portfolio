@@ -1,12 +1,15 @@
 import "../styles/section-galleries.css";
 import { GridGalleryItem } from "./GridGaleryItem";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AppContext } from "../store/appContext";
 
 export const SectionGalleries = () => {
 
     const [galleries, setGalleries] = useState([]);
     // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
     const apiBaseUrl = 'http://127.0.0.1:5000';
+
+    const { store } = useContext(AppContext);
 
     useEffect(() => {
         fetch(`${apiBaseUrl}/galleries`)
@@ -21,10 +24,12 @@ export const SectionGalleries = () => {
         en: "View gallery"
     }
 
+    const languageContent = galleryLink[store.language] || galleryLink.en;
+
     return (
         <section className="galleries" id="section-galleries">
             {galleries.map((gal, index) => (
-                <GridGalleryItem gal={gal} key={index} tag={galleryLink.es} />
+                <GridGalleryItem gal={gal} key={index} tag={languageContent} />
             ))}
         </section>
     )

@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../styles/about.css";
 import raimundoPhoto from "../img/about-me.png";
 import sheepPhoto from "../img/Chiloe-34.webp";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
@@ -9,8 +8,11 @@ import { Footer } from "../components/Footer";
 import { AppContext } from "../store/appContext";
 import { LanguageToggler } from "../components/LanguageToggler";
 
+import "../styles/about.css";
+
 export const About = () => {
     const { store, actions } = useContext(AppContext);
+
     const textContent = {
         es: {
             title: "Sobre mí",
@@ -31,6 +33,18 @@ export const About = () => {
     }
 
     const languageContent = textContent[store.language] || textContent.en;
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1100);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth > 1100);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup al desmontar
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <section id="about-me">
@@ -43,31 +57,39 @@ export const About = () => {
 
             <main>
                 <div className="container">
-                    {/* Columna de texto a la izquierda */}
-                    <div className="text-column urbanist-about-me-text">
-                        <p>
-                            {languageContent.parag1}
-                        </p>
-                        <p>
-                            {languageContent.parag2}
-                        </p>
-                        <p>
-                            {languageContent.parag3}
-                        </p>
-                        <p>
-                            {languageContent.parag4}
-                        </p>
-                        <p>
-                            {languageContent.parag5}
-                        </p>
-                        <h2 className="palanquin-dark-medium">Raimundo del Rio Covarrubias</h2>
-                    </div>
+                    {isLargeScreen ? (
+                        <>
+                            {/* Distribución para pantallas grandes */}
+                            <div className="text-column urbanist-about-me-text">
+                                <p>{languageContent.parag1}</p>
+                                <p>{languageContent.parag2}</p>
+                                <p>{languageContent.parag3}</p>
+                                <p>{languageContent.parag4}</p>
+                                <p>{languageContent.parag5}</p>
+                                <h2 className="palanquin-dark-medium">Raimundo del Rio C.</h2>
+                            </div>
 
-                    {/* Columna de imágenes a la derecha */}
-                    <div className="image-column">
-                        <img src={raimundoPhoto} alt="Raimundo del Rio Fotógrafo Sur de Chile" className="image" />
-                        <img src={sheepPhoto} alt="Oveja Chiloé Chile" className="image" />
-                    </div>
+                            <div className="image-column">
+                                <img src={raimundoPhoto} alt="Raimundo del Rio Fotógrafo Sur de Chile" className="image" />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            {/* Distribución para pantallas pequeñas */}
+                            <div className="image-column">
+                                <img src={raimundoPhoto} alt="Raimundo del Rio Fotógrafo Sur de Chile" className="image" />
+                            </div>
+
+                            <div className="text-column urbanist-about-me-text">
+                                <p>{languageContent.parag1}</p>
+                                <p>{languageContent.parag2}</p>
+                                <p>{languageContent.parag3}</p>
+                                <p>{languageContent.parag4}</p>
+                                <p>{languageContent.parag5}</p>
+                                <h2 className="palanquin-dark-medium">Raimundo del Rio C.</h2>
+                            </div>
+                        </>
+                    )}
                 </div>
             </main>
             <Footer />

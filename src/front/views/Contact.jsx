@@ -16,17 +16,18 @@ export const Contact = () => {
 
     const { store } = useContext(AppContext);
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
+    const [formData, setFormData] = useState(() => {
+        // Intentar recuperar los datos del sessionStorage
+        const savedData = sessionStorage.getItem("formContacto");
+        return savedData ? JSON.parse(savedData) : { name: "", email: "", phone: "", message: "" };
     });
 
     const handleChange = (event) => {
         console.log(event.target);
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        const updatedFormData = { ...formData, [name]: value };
+        setFormData(updatedFormData);
+        sessionStorage.setItem('formContacto', JSON.stringify(updatedFormData));
     };
 
     const handleSubmit = (event) => {
@@ -51,8 +52,8 @@ export const Contact = () => {
         };
 
         // Enviar el formulario usando EmailJS
-        const SERVICE_ID = "service_eknlyzc";
-        const TEMPLATE_ID = "template_vnn45sc";
+        const SERVICE_ID = "service_hufqh1q";
+        const TEMPLATE_ID = "template_6x7jveu";
         const USER_ID = "-yxxv8md0PULJcOgX";
 
         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
@@ -76,7 +77,7 @@ export const Contact = () => {
             from_email: formData.email,
         };
 
-        const TEMPLATE_CONFIRM_ID = "template_bxnur57";
+        const TEMPLATE_CONFIRM_ID = "template_1q1mrle";
 
         emailjs
             .send(
@@ -113,8 +114,8 @@ export const Contact = () => {
             message: 'Message',
             messagePlaceholder: 'Talk to me about something...',
             button: 'Send',
-            parag1: '¿Are you interested in photography and you want to know about my technics? ¿Do you want to buy a picture for personal or prefessional use?',
-            parag2: "Contact me and I'll love to help you with your needs."
+            parag1: "I'll be thankful for your contact for exchange experiences or if you want to buy authorized original pictures.",
+            parag2: "All my pictures has copywrite."
         },
         es: {
             title: 'Contacto',
@@ -127,8 +128,8 @@ export const Contact = () => {
             message: 'Mensaje',
             messagePlaceholder: 'Cuéntame lo que quieras...',
             button: 'Enviar',
-            parag1: '¿Te interesa la fotografía y te gustaría conocer más sobre mis técnicas? ¿Quieres comprar una foto para uso personal o profesional?',
-            parag2: 'Ponte en contacto conmigo y estaré encantado de ayudarte en lo que necesites.',
+            parag1: 'Agradeceré tu contacto para intercambiar experiencias o si te interesa comprar copias autorizadas.',
+            parag2: 'Todas mis fotos tiene derechos de autor.',
         }
     }
 
@@ -152,6 +153,7 @@ export const Contact = () => {
                         <div className="form-field">
                             <label htmlFor="name">{languageContent.name}*</label>
                             <input
+                                id="name"
                                 type="text"
                                 name="name"
                                 placeholder={languageContent.namePlaceholder}
@@ -161,8 +163,9 @@ export const Contact = () => {
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="name">{languageContent.email}*</label>
+                            <label htmlFor="email">{languageContent.email}*</label>
                             <input
+                                id="email"
                                 type="email"
                                 name="email"
                                 placeholder={languageContent.emailPlaceholder}
@@ -172,10 +175,11 @@ export const Contact = () => {
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="name">{languageContent.phone}*</label>
+                            <label htmlFor="phone">{languageContent.phone}*</label>
                             <input
-                                type="phone"
-                                name="number"
+                                id="phone"
+                                type="tel"
+                                name="phone"
                                 placeholder={languageContent.phonePlaceholder}
                                 value={formData.phone}
                                 onChange={handleChange}
@@ -183,8 +187,9 @@ export const Contact = () => {
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="name">{languageContent.message}*</label>
+                            <label htmlFor="message">{languageContent.message}*</label>
                             <textarea
+                                id="message"
                                 name="message"
                                 placeholder={languageContent.messagePlaceholder}
                                 value={formData.message}
@@ -193,7 +198,14 @@ export const Contact = () => {
                             </textarea>
                         </div>
 
-                        <button type="submit">{languageContent.button}</button>
+                        <input
+                            type="submit"
+                            className=""
+                            value={languageContent.button}
+                            onClick={handleSubmit}
+                            style={{display: "block"}}
+                        />
+                        {/* <button type="submit">{languageContent.button}</button> */}
 
                     </form>
                     <div className="second-column">

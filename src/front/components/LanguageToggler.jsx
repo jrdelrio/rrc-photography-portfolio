@@ -9,17 +9,22 @@ export const LanguageToggler = () => {
     actions.changeLanguage(store.language === 'es' ? 'en' : 'es');
   };
 
-  return (
-    <div className="toggle-wrapper">
-      <label className='switch'>
-        <input 
-        type='checkbox' 
-        onChange={handleToggle} 
-        checked={store.language === 'es'} />
-        <div className="indicator left"></div>
-        <div className="indicator right"></div>
-        <div className="button"></div>
-      </label>
-    </div>
-  );
+  if (store.showLanguageToggler) {
+    return (
+      <div className="toggle-wrapper">
+        <label className='switch'>
+          <input
+            type='checkbox'
+            onChange={handleToggle}
+            checked={store.language === 'es'} />
+          <div className="indicator left"></div>
+          <div className="indicator right"></div>
+          <div className="button"></div>
+        </label>
+      </div>
+    );
+  }
+  else {
+    return null;
+  }
 };

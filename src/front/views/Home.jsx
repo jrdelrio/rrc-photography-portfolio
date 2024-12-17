@@ -24,11 +24,12 @@ const Home = () => {
                 <MainLogoVectorWhite />
                 <Navbar />
                 <LanguageToggler />
+                
 
                 <HomeCarousel />
             </header>
             <main>
-                <QuoteSection />
+                {/* <QuoteSection /> */}
                 <SectionGalleries />
                 <Footer />
             </main>

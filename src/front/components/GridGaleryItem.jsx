@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const GridGalleryItem = ({ gal, tag }) => {
 
@@ -20,7 +21,7 @@ export const GridGalleryItem = ({ gal, tag }) => {
         portraits: store.language === 'es' ? "Retratos" : "Portraits",
         textures: store.language === 'es' ? "Texturas" : "Textures",
         mountines: store.language === 'es' ? "Montañas" : "Mountains",
-        details_of_sea: store.language === 'es' ? "Detalles del Mar" : "Details of the Sea",
+        details_of_sea: store.language === 'es' ? "Detalles de la costa" : "Details of the Coast",
         protests: store.language === 'es' ? "Protestas" : "Protests"
     };
 
@@ -36,7 +37,8 @@ export const GridGalleryItem = ({ gal, tag }) => {
             <h3 className="gallery-cover-title">
                 {styledName}
             </h3>
-            <a href={`/gallery/${gal.gallery_name}`}>{tag}</a>
+            {/* <a href={`/gallery/${gal.gallery_name}`}>{tag}</a> */}
+            <Link to={`/gallery/${gal.gallery_name}`}>{tag}</Link>
         </div>
     );
 }

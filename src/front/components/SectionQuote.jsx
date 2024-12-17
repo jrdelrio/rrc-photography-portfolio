@@ -22,7 +22,7 @@ export const QuoteSection = () => {
                 {languageContent.quote}
             </p>
             <h3 className="author palanquin-dark-medium">
-                Raimundo del Rio Covarrubias
+                Raimundo del Rio C.
             </h3>
         </section>
     )

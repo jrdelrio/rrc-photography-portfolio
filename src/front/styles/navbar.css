@@ -14,6 +14,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5.2px);
     -webkit-backdrop-filter: blur(5.2px);
+    transition: transform 0.2s ease-in-out;
 
 }
 
@@ -51,6 +52,7 @@
     display: none;
 }
 
+/* icono de la hamburguesa */
 .hamburger-icon {
     display: none;
     position: absolute;
@@ -64,15 +66,44 @@
     scale: 2;
     z-index: 100;
     cursor: pointer;
-    display: none;
+    transition: transform 0.2s ease-in-out;
 }
 
-@media (width <= 1000px) {  /* de aqui para abajo con hamburguesa */
+.hamburger-icon.rotated {
+    transform: rotate(90deg);
+}
+
+/* navbar para mobiles */
+.main-navbar.mobile-navbar {
+    padding: 0 20px;
+    top: 18%;
+    width: max-content; /* El navbar ocupará el 95% del ancho de la pantalla */
+    max-width: 500px;
+    left: 50%;
+}
+
+.main-navbar.mobile-navbar ul {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px; /* Espacio calculado entre elementos */
+    width: 100%; /* Aprovecha todo el espacio del contenedor */
+}
+
+.main-navbar.mobile-navbar ul li a{
+    padding: 20px 0px;
+    text-align: center;
+}
+
+@media (width <=1000px) {
+    /* de aqui para abajo con hamburguesa */
 
     .hamburger-icon {
         display: block;
     }
 
+    .main-navbar.hidden {
+        display: none;
+    }
 
     .main-navbar.active ul li a {
         display: block;

@@ -3,7 +3,6 @@
     --color-main-bg: #212121;
     --color-gray-dark: #5E6366;
     --color-gray-light: #ABAFB1;
- 
     --color-white: #FFFFFF;
 
 }
@@ -66,7 +65,8 @@ section#section-contact main {
     top: 3px;
 }
 
-.contact-container form button[type=submit] {
+.contact-container form button[type=submit],
+.contact-container form input[type=submit] {
     padding-left: 0;
     background: var(--color-white);
     color: var(--color-black);
@@ -86,6 +86,15 @@ section#section-contact main {
 .contact-container form div input {
     position: relative;
     padding-top: 18px;
+}
+
+/* quitar las flechitas del input tipo number */
+.contact-container form div input[type='number']::-webkit-outer-spin-button,
+.contact-container form div input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.contact-container form div input[type='number'] {
+    -moz-appearance: textfield;
 }
 
 .contact-container form div textarea {

@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import Home from "./front/views/Home";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import injectContext from "./front/store/appContext";
@@ -8,24 +9,33 @@ import { SinglePhotoView } from "./front/views/SinglePhotoView";
 import { Footer } from "./front/components/Footer";
 import { NotFound } from "./front/views/NotFound";
 import Navbar from "./front/components/Navbar";
+import { SpinnerPulsar } from "./front/components/SpinnerPulsar";
 
 const App = () => {
     const basename = process.env.BASENAME || "";
 
     return (
         <BrowserRouter basename={basename}>
-            
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/gallery/:str" element={<Gallery />} />
-                <Route path="gallery/:str/single/:int" element={<SinglePhotoView />} />
+                <Route
+                    path="/gallery/:str"
+                    element={
+                        <Suspense fallback={<SpinnerPulsar />}>
+                            <Gallery />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="gallery/:str/single/:int"
+                    element={<SinglePhotoView />}
+                />
 
                 {/* error 404 */}
-                <Route path='*' element={<NotFound />}/>
+                <Route path="*" element={<NotFound />} />
             </Routes>
-            
         </BrowserRouter>
     );
 };

@@ -3,14 +3,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			favorites: [],
 			language: "es",
-			showResponsiveNavbar: false
+			showResponsiveNavbar: false,
+			showLanguageToggler: true
 		},
 
 		actions: {
+
 			addFavorite: (item) => {
 				const store = getStore();
 				setStore({favorites: [...store.favorites, item]});
 				console.log(`Added to favorites: ${item}!`);
+			},
+
+			setShowLanguageToggler: (bool) => {
+				const store = getStore();
+				setStore({showLanguageToggler: bool});
+				console.log('cambiado el Show Language Toggler')
 			},
 			
 			changeLanguage: (newLanguage) => {
@@ -19,15 +27,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(`Language changed to: ${newLanguage}`);
 			},
 
-			ShowResponsiveNavbar: () => {
+			showResponsiveNavbar: () => {
 				const store = getStore();
 				if (store.showResponsiveNavbar) {
 					setStore({showResponsiveNavbar: false});
-					console.log('cerrando navbar secundario')
+					console.log('ocultando navbar secundario')
 				}
 				else {
 					setStore({showResponsiveNavbar: true});
-					console.log('abriendo navbar secundario')
+					console.log('mostrando navbar secundario')
 				}
 			}
 		}
