@@ -1,13 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../store/appContext";
 import { Link } from "react-router-dom";
-import "../styles/contact.css";
-import "../styles/fonts.css";
 import { IconBackArrow } from "../components/IconBackArrow";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { LanguageToggler } from "../components/LanguageToggler";
+
+import "../styles/fonts.css";
+import "../styles/contact.css";
 
 
 import emailjs from "emailjs-com";
@@ -44,6 +45,18 @@ export const Contact = () => {
             return; // Detiene la ejecución si faltan campos
         }
 
+        // Validación de formato de Email
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            alert("Por favor, introduce un correo electrónico válido.");
+            return;
+        }
+
+        // Validación de Teléfono (mínimo 7 dígitos)
+        if (formData.phone.length < 7) {
+            alert("Por favor, introduce un número de teléfono válido.");
+            return;
+        }
+
         const templateParams = {
             from_name: formData.name,
             from_email: formData.email,
@@ -52,9 +65,11 @@ export const Contact = () => {
         };
 
         // Enviar el formulario usando EmailJS
-        const SERVICE_ID = "service_hufqh1q";
-        const TEMPLATE_ID = "template_6x7jveu";
-        const USER_ID = "-yxxv8md0PULJcOgX";
+        const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+        const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+        const USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
+        const TEMPLATE_CONFIRM_ID = process.env.REACT_APP_EMAILJS_CONFIRMATION_TEMPLATE_ID;
+
 
         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
             (result) => {
@@ -76,8 +91,6 @@ export const Contact = () => {
             from_name: formData.name,
             from_email: formData.email,
         };
-
-        const TEMPLATE_CONFIRM_ID = "template_1q1mrle";
 
         emailjs
             .send(
@@ -129,7 +142,7 @@ export const Contact = () => {
             messagePlaceholder: 'Cuéntame lo que quieras...',
             button: 'Enviar',
             parag1: 'Agradeceré tu contacto para intercambiar experiencias o si te interesa comprar copias autorizadas.',
-            parag2: 'Todas mis fotos tiene derechos de autor.',
+            parag2: 'Todas mis fotos tienen derechos de autor.',
         }
     }
 
@@ -203,7 +216,7 @@ export const Contact = () => {
                             className=""
                             value={languageContent.button}
                             onClick={handleSubmit}
-                            style={{display: "block"}}
+                            style={{ display: "block" }}
                         />
                         {/* <button type="submit">{languageContent.button}</button> */}
 

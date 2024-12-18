@@ -76,13 +76,13 @@ export const About = () => {
                     ) : (
                         <>
                             {/* Distribución para pantallas pequeñas */}
-                            <div className="image-column">
-                                <img src={raimundoPhoto} alt="Raimundo del Rio Fotógrafo Sur de Chile" className="image" />
-                            </div>
 
                             <div className="text-column urbanist-about-me-text">
                                 <p>{languageContent.parag1}</p>
-                                <p>{languageContent.parag2}</p>
+                                <p style={{ marginBottom: 0 }}>{languageContent.parag2}</p>
+                                <div className="image-column">
+                                    <img src={raimundoPhoto} alt="Raimundo del Rio Fotógrafo Sur de Chile" className="image" style={{ marginBottom: "40px" }} />
+                                </div>
                                 <p>{languageContent.parag3}</p>
                                 <p>{languageContent.parag4}</p>
                                 <p>{languageContent.parag5}</p>

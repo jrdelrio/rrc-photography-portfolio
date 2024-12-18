@@ -93,6 +93,7 @@ section#section-contact main {
 .contact-container form div input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
 .contact-container form div input[type='number'] {
     -moz-appearance: textfield;
 }
@@ -126,4 +127,47 @@ section#section-contact main {
     color: var(--color-white);
     z-index: 100;
     width: 70%;
+}
+
+@media (width < 1000px) {
+    #section-contact main .contact-container {
+        display: block;
+        width: fit-content;
+        margin-right: 4rem;
+        margin-left: 4rem;
+        justify-self: center;
+    }
+
+    .contact-container form {
+        width: 100%;
+        padding-bottom: 40px;
+    }
+
+    #section-contact main .contact-container form .form-field input,
+    #section-contact main .contact-container form .form-field textarea,
+    #section-contact main .contact-container form input,
+    #section-contact main .contact-container .second-column,
+    #section-contact main .contact-container .second-column p {
+        width: 100% !important
+    }
+
+    #section-contact main .contact-container .second-column {
+        margin-top: 0;
+    }
+
+    #section-contact main .contact-container .second-column p:last-child {
+        margin-bottom: 0;
+        padding-bottom: 30px;
+    }
+
+    .contact-container form {
+        padding-top: 50px;
+    }
+}
+
+@media (width < 500px) {
+    #section-contact main .contact-container {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
 }
