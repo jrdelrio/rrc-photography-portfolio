@@ -12,12 +12,9 @@ const HomeCarousel = () => {
   const [carouselImages, setCarouselImages] = useState([]);
   const apiBaseUrl = 'http://15.229.117.183:5000';
 
-  console.log(apiBaseUrl)
-
   console.log('apiBaseUrl', apiBaseUrl);
 
   useEffect(() => {
-    console.log(apiBaseUrl)
     fetch(`${apiBaseUrl}/carrousel`, {
       method: "GET",
       mode: 'cors'
