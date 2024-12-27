@@ -7,7 +7,7 @@ export const SectionGalleries = () => {
 
     const [galleries, setGalleries] = useState([]);
     // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const apiBaseUrl = 'http://127.0.0.1:5000';
+    const apiBaseUrl = 'http://15.229.117.183:5000';
 
     const { store } = useContext(AppContext);
 

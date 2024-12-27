@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { IconBackArrow } from "../components/IconBackArrow";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";

@@ -10,13 +10,18 @@ const HomeCarousel = () => {
   const [styledName, setStyledName] = useState('');
 
   const [carouselImages, setCarouselImages] = useState([]);
-  const apiBaseUrl = 'http://127.0.0.1:5000';
+  const apiBaseUrl = 'http://15.229.117.183:5000';
 
+  console.log(apiBaseUrl)
 
-
+  console.log('apiBaseUrl', apiBaseUrl);
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/carrousel`)
+    console.log(apiBaseUrl)
+    fetch(`${apiBaseUrl}/carrousel`, {
+      method: "GET",
+      mode: 'cors'
+    })
       .then((response) => response.json())
       .then((result) => setCarouselImages(result))
       .catch((error) => console.error("Error fetching galleries:", error));
