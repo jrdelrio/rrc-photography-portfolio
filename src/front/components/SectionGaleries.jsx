@@ -12,7 +12,12 @@ export const SectionGalleries = () => {
     const { store } = useContext(AppContext);
 
     useEffect(() => {
-        fetch(`${apiBaseUrl}/galleries`)
+        fetch(`${apiBaseUrl}/galleries`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then((response) => response.json())
             .then((result) => setGalleries(result))
             .catch((error) => console.error("Error fetching galleries:", error));

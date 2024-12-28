@@ -15,7 +15,9 @@ const HomeCarousel = () => {
   useEffect(() => {
     fetch(`${apiBaseUrl}/carrousel`, {
       method: "GET",
-      mode: 'cors'
+      headers: {
+        'Content-Type': 'application/json',
+      }
     })
       .then((response) => response.json())
       .then((result) => setCarouselImages(result))

@@ -26,7 +26,12 @@ export const Gallery = () => {
     const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
     useEffect(() => {
-        fetch(`${apiBaseUrl}/photos_from_${str}`)
+        fetch(`${apiBaseUrl}/photos_from_${str}`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then((response) => response.json())
             .then((result) => {
                 setGalleryImages(result.gallery_photos)
