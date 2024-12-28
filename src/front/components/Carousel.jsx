@@ -10,7 +10,7 @@ const HomeCarousel = () => {
   const [styledName, setStyledName] = useState('');
 
   const [carouselImages, setCarouselImages] = useState([]);
-  const apiBaseUrl = 'http://15.229.117.183:5000';
+  const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/carrousel`, {

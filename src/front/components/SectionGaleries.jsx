@@ -7,7 +7,7 @@ export const SectionGalleries = () => {
 
     const [galleries, setGalleries] = useState([]);
     // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const apiBaseUrl = 'https://15.229.117.183:5000';
+    const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
     const { store } = useContext(AppContext);
 

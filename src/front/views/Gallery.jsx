@@ -23,7 +23,7 @@ export const Gallery = () => {
     const { store, actions } = useContext(AppContext);
 
 
-    const apiBaseUrl = 'https://15.229.117.183:5000';
+    const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
     useEffect(() => {
         fetch(`${apiBaseUrl}/photos_from_${str}`)
