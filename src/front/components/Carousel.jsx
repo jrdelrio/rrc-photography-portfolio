@@ -10,9 +10,7 @@ const HomeCarousel = () => {
   const [styledName, setStyledName] = useState('');
 
   const [carouselImages, setCarouselImages] = useState([]);
-  const apiBaseUrl = 'https://15.229.117.183:5000';
-
-  console.log('apiBaseUrl', apiBaseUrl);
+  const apiBaseUrl = 'http://15.229.117.183:5000';
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/carrousel`, {
