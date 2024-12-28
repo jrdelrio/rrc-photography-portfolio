@@ -16,7 +16,8 @@ export const SectionGalleries = () => {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
+            credentials: 'include'
         })
             .then((response) => response.json())
             .then((result) => setGalleries(result))

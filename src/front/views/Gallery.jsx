@@ -30,7 +30,8 @@ export const Gallery = () => {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
+            credentials: 'include'
         })
             .then((response) => response.json())
             .then((result) => {
