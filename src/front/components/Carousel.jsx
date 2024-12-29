@@ -67,9 +67,7 @@ const HomeCarousel = () => {
           <Carousel.Item key={index}>
             <img src={item.photo_url} className="carousel-img" alt="" />
             {/* <Carousel.Caption>
-
             <h3 className='palanquin-dark-bold'>{styler(item.gallery_name)}</h3>
-
           </Carousel.Caption> */}
           </Carousel.Item>
         ))}

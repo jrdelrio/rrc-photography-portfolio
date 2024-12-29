@@ -35,13 +35,15 @@ export const NotFound = () => {
 
             <main>
                 <h1>{languageContent.message}</h1>
-                <div className="links">
-                    <Link to='/'>{languageContent.linkGalleries}</Link>
-                    <Link to='/about'>{languageContent.linkAboutMe}</Link>
-                    <Link to='/contact'>{languageContent.linkContact}</Link>
-                </div>
-                <div>
-                    <img src={cameraIcon} />
+                <div className="wrapper">
+                    <div className="links">
+                        <Link to='/'>{languageContent.linkGalleries}</Link>
+                        <Link to='/about'>{languageContent.linkAboutMe}</Link>
+                        <Link to='/contact'>{languageContent.linkContact}</Link>
+                    </div>
+                    <div className="camera-icon">
+                        <img src={cameraIcon} />
+                    </div>
                 </div>
             </main>
             <Footer />

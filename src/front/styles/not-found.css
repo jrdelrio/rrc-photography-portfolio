@@ -14,7 +14,7 @@
 #not-found header {
     position: relative;
     height: 25vh;
-    background-image: url(../img/details\ of\ the\ coast-21.webp);
+    background-image: url(../img/details_of_the_coast-21.webp);
     background-size: cover;
     background-position: center;
 }
@@ -31,6 +31,19 @@
 #not-found main {
     margin-left: 100px;
     justify-content: space-between;
+}
+
+#not-found main div.wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#not-found main div.camera-icon {
+    align-self: center;
+}
+
+div.camera-icon img {
+    width: 100px;
 }
 
 #not-found main a {
@@ -54,4 +67,14 @@
 
 #not-found main a:first-child {
     margin-top: 50px;
+}
+
+@media (width < 750px) {
+    #not-found main div.wrapper {
+        display: block !important;
+    }
+
+    #not-found main {
+        justify-items: center;
+    }
 }
