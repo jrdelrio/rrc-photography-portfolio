@@ -7,10 +7,10 @@
 
 }
 
-#section-contact header {
+#section-contact header .header-header {
     position: relative;
     height: 40vh;
-    background-image: url(../img/details_of_the_coast-21.webp);
+    background-image: url(../img/details_of_the_coast-21.jpg);
     background-size: cover;
     background-position: center;
 }
