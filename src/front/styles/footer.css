@@ -1,6 +1,7 @@
 :root {
     --color-background: #1a1a1a;
     --color-footer-text: #ffffff50;
+    --color-footer-text-70op: #ffffff70;
 }
 
 
@@ -24,6 +25,7 @@ footer.footer {
     text-align: end;
     margin-right: 45px;
     position: relative;
+    color: var(--color-footer-text);
 }
 
 .footer-links {
@@ -58,10 +60,36 @@ footer.footer {
 .footer .footer-links p a
  {
     font-size: 14px;
-    color: #ffffff;
+    color: var(--color-footer-text-70op);
     text-decoration: none;
 }
 
 .footer .footer-links a {
     color: var(--color-footer-text);
+}
+
+@media (width < 500px) {
+    footer.footer {
+        display: block;
+        justify-items: center;
+    }
+
+    .footer .footer-links {
+        margin-right: 0;
+        justify-items: center;
+    }
+
+    .footer-links a svg {
+        scale: .8;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .logo-credits h2 {
+        justify-self: center;
+    }
+
+    .logo-credits * {
+        margin-left: 0;
+    }
 }

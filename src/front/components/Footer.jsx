@@ -30,13 +30,13 @@ export const Footer = () => {
         <footer className="footer">
             <div className="logo-credits">
                 <MainLogoVectorWhite styles={styles} />
-                <h2>Raimundo del Rio Photography</h2>
-                <h3>{languageContent.copyWrite}</h3>
+                <h2 className="urbanist-about-me-text">Raimundo del Rio Photography</h2>
+                <h3 className="urbanist-about-me-text">{languageContent.copyWrite}</h3>
             </div>
 
             <div className="footer-links">
                 <a href={instaProfileLInk} target="_blank"><IconInsta color='#ffffff' height='40px' /></a>
-                <p>{languageContent.creators} <a href="https://chilisites.com/">🌶️chiliSites®</a></p>
+                <p className="urbanist-about-me-text">{languageContent.creators} <a className="urbanist-about-me-text" href="https://chilisites.com/">🌶️chiliSites®</a></p>
             </div>
         </footer>
     )

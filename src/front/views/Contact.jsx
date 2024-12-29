@@ -154,9 +154,8 @@ export const Contact = () => {
             <header>
                 <div className="header-header">
                     <Link to="/"><MainLogoVectorWhite /></Link>
-
-                </div>
                 <h1 className="palanquin-dark-bold">{languageContent.title}</h1>
+                </div>
             </header>
 
             <main>

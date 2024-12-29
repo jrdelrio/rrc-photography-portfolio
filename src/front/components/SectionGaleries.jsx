@@ -12,6 +12,8 @@ export const SectionGalleries = () => {
     const { store } = useContext(AppContext);
 
     useEffect(() => {
+        const isMediumScreen = window.innerWidth > 500 && window.innerWidth <= 1000;
+
         fetch(`${apiBaseUrl}/galleries`, {
             method: "GET",
             headers: {
@@ -20,9 +22,30 @@ export const SectionGalleries = () => {
             credentials: 'include'
         })
             .then((response) => response.json())
-            .then((result) => setGalleries(result))
+            .then((result) => {
+                if (!isMediumScreen) {
+                    // Si la pantalla no es pequeña/mediana, agrega el objeto adicional
+                    const updatedGalleries = [...result];
+                    const lastGalleryId = updatedGalleries.length > 0
+                        ? Math.max(...updatedGalleries.map(gal => gal.gallery_id))
+                        : 0;
+
+                    const extraObject = {
+                        cover_photo_url: null,
+                        gallery_id: lastGalleryId + 1,
+                        gallery_name: "test"
+                    };
+
+                    updatedGalleries.push(extraObject);
+                    setGalleries(updatedGalleries);
+                } else {
+                    // Si la pantalla es pequeña/mediana, solo establece las galerías normales
+                    setGalleries(result);
+                }
+            })
             .catch((error) => console.error("Error fetching galleries:", error));
     }, [apiBaseUrl]);
+
 
 
     const galleryLink = {

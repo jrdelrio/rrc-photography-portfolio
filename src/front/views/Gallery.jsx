@@ -35,7 +35,7 @@ export const Gallery = () => {
         })
             .then((response) => response.json())
             .then((result) => {
-                setGalleryImages(result.gallery_photos)
+                setGalleryImages(result.gallery_photos);
                 setGalleryCoverUrl(result.cover_photo);
             })
             .catch((error) => console.error("Error fetching galleries:", error));
