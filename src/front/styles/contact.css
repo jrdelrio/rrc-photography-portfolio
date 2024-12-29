@@ -163,11 +163,19 @@ section#section-contact main {
     .contact-container form {
         padding-top: 50px;
     }
+
+    #section-contact header h1 {
+        margin-left: 50px;
+    }
 }
 
 @media (width < 500px) {
     #section-contact main .contact-container {
         margin-right: 5%;
         margin-left: 5%;
+    }
+
+    #section-contact header h1 {
+        margin-left: 50px;
     }
 }

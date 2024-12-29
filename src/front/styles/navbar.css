@@ -76,7 +76,7 @@
 /* navbar para mobiles */
 .main-navbar.mobile-navbar {
     padding: 0 20px;
-    top: 18%;
+    top: 24%;
     width: max-content; /* El navbar ocupará el 95% del ancho de la pantalla */
     max-width: 500px;
     left: 50%;
