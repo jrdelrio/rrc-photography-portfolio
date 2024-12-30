@@ -196,7 +196,7 @@ export const Contact = () => {
 
             <main>
                 <div className="contact-container">
-                    <form>
+                    <form className="urbanist-about-me-text">
                         <div className="form-field">
                             <label htmlFor="name">{languageContent.name}*</label>
                             <input

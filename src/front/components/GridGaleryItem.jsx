@@ -38,7 +38,7 @@ export const GridGalleryItem = ({ gal, tag }) => {
                 {styledName}
             </h3>
             {/* <a href={`/gallery/${gal.gallery_name}`}>{tag}</a> */}
-            <Link className="urbanist-about-me-text grid-item" to={`/gallery/${gal.gallery_name}`}>{tag}</Link>
+            <Link className="urbanist-about-me-text" to={`/gallery/${gal.gallery_name}`}>{tag}</Link>
         </div >
     );
 }

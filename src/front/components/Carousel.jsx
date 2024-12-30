@@ -1,16 +1,18 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React, { useState, useEffect } from 'react';
 import "../styles/carousel.css";
+import { pulsar } from 'ldrs';
 // import { AppContext } from '../store/appContext';
-// import { QuoteSection } from './SectionQuote';
+// import { QuoteSection } from './SectionQuote';'
+import { SpinnerPulsar } from "./SpinnerPulsar.jsx";
 
 const HomeCarousel = () => {
 
   // const { store } = useContext(AppContext);
   // const [styledName, setStyledName] = useState('');
 
-  const [carouselImages, setCarouselImages] = useState([]);
-  
+  const [carouselImages, setCarouselImages] = useState(undefined);
+
   const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
   useEffect(() => {
@@ -53,22 +55,37 @@ const HomeCarousel = () => {
 
   // const languageContent = textContent[store.language] || textContent.en;
 
+  const noDataViewStyles = { 
+    height: '100vh', 
+    backgroundColor: 'black',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 
-  return (
-    <>
+  {
+    if (carouselImages) {
+      return (
+        <>
+          <Carousel data-bs-theme="dark" fade>
+            {carouselImages.map((item, index) => (
+              <Carousel.Item key={index}>
+                <img src={item.photo_url} className="carousel-img" alt="" />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </>
+      )
+    }
+    else {
+      return (
+        <div style={noDataViewStyles}>
+          <SpinnerPulsar color={'#fff'} size={300}/>
+        </div>
+      )
+    }
+  }
 
-      <Carousel data-bs-theme="dark" fade>
-        {carouselImages.map((item, index) => (
-          <Carousel.Item key={index}>
-            <img src={item.photo_url} className="carousel-img" alt="" />
-            {/* <Carousel.Caption>
-            <h3 className='palanquin-dark-bold'>{styler(item.gallery_name)}</h3>
-          </Carousel.Caption> */}
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </>
-  );
 }
 
 export default HomeCarousel;
