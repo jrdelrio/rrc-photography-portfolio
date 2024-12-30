@@ -14,13 +14,7 @@ export const SectionGalleries = () => {
     useEffect(() => {
         const isMediumScreen = window.innerWidth > 500 && window.innerWidth <= 1000;
 
-        fetch(`${apiBaseUrl}/galleries`, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include'
-        })
+        fetch(`${apiBaseUrl}/galleries`)
             .then((response) => response.json())
             .then((result) => {
                 if (!isMediumScreen) {

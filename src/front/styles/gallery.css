@@ -53,7 +53,8 @@
 }
 
 .masonry-item img.hidden {
-    opacity: 0; /* Oculta la imagen hasta que esté completamente cargada */
+    opacity: 0;
+    /* Oculta la imagen hasta que esté completamente cargada */
 }
 
 .masonry-item .spinner-container {
@@ -67,18 +68,24 @@
 }
 
 .masonry-item:hover {
-    transform: scale(1.05); /* Zoom-in en hover */
-    border-color: grey; /* Borde gris al hacer hover */
+    transform: scale(1.05);
+    /* Zoom-in en hover */
+    border-color: grey;
+    /* Borde gris al hacer hover */
 }
 
-@media (width <= 1000px) {
+@media (width <=1000px) {
     .masonry {
         columns: 2;
-        }
+    }
 }
 
-@media (width <= 500px) {
+@media (width <=500px) {
     .masonry {
         columns: 1;
-        }
+    }
+
+    #galleryView header h1 {
+        margin-left: 50px;
+    }
 }

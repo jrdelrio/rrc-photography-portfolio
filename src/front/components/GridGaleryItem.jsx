@@ -30,12 +30,10 @@ export const GridGalleryItem = ({ gal, tag }) => {
         setStyledName(stylerObject[gal.gallery_name])
     }, [gal.gallery_name, store.language])
 
-    console.log(gal)
-    console.log(gal.cover_photo_url)
     return (
-        <div div className={`grid-item`}>
+        <div className={`grid-item`}>
             
-            {gal.cover_photo_url ? <img src={gal.cover_photo_url} alt="image" className="gallery-cover" /> : ''}
+            {gal.cover_photo_url ? <img src={gal.cover_photo_url} alt="image" className="gallery-cover" /> : null}
             <h3 className="gallery-cover-title palanquin-dark-bold">
                 {styledName}
             </h3>

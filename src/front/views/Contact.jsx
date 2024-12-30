@@ -16,6 +16,31 @@ export const Contact = () => {
 
     const { store } = useContext(AppContext);
 
+    const [isLandscape, setIsLandscape] = useState(
+        window.innerWidth > window.innerHeight
+    );
+    const [isMobile, setIsMobile] = useState(false);
+
+    const detectMobileDevice = () => {
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    };
+
+    useEffect(() => {
+            const handleResize = () => {
+                const isLandscapeNow = window.innerWidth > window.innerHeight;
+                setIsLandscape(isLandscapeNow);
+            };
+    
+            setIsMobile(detectMobileDevice());
+            handleResize();
+    
+            // Escuchar cambios en el tamaño de la ventana
+            window.addEventListener("resize", handleResize);
+    
+            // Limpieza del evento al desmontar el componente
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
+
     const [formData, setFormData] = useState(() => {
         // Intentar recuperar los datos del sessionStorage
         const savedData = sessionStorage.getItem("formContacto");
@@ -147,14 +172,23 @@ export const Contact = () => {
 
     const languageContent = textContent[store.language] || textContent.en;
 
+    const landscapeStyles = {
+        header: {height: "45vh"},
+        logo: {top: 0},
+    }
+
+    const portraitStyles = {
+        height: "30vh",
+    }
+
     return (
         <section id="section-contact">
             <Navbar />
             <LanguageToggler />
-            <header>
+            <header style={isLandscape && isMobile ? landscapeStyles.header : portraitStyles}>
                 <div className="header-header">
-                    <Link to="/"><MainLogoVectorWhite /></Link>
-                <h1 className="palanquin-dark-bold">{languageContent.title}</h1>
+                    <Link to="/"><MainLogoVectorWhite styles={isLandscape && isMobile ? landscapeStyles.logo : {}}/></Link>
+                    <h1 className="palanquin-dark-bold">{languageContent.title}</h1>
                 </div>
             </header>
 

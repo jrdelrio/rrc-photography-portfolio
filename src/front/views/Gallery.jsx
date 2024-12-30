@@ -1,13 +1,14 @@
-import React, { useEffect, useState, Suspense, lazy, useContext } from "react";
+// import React, { useEffect, useState, Suspense, lazy, useContext } from "react";
+import React, { useEffect, useState, lazy, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MainLogoVectorWhite } from "../components/MainLogoVectorWhite";
 import "../styles/gallery.css";
-import { pulsar } from 'ldrs';
+// import { pulsar } from 'ldrs';
 import Navbar from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { SinglePhotoView } from "./SinglePhotoView";
-import { SpinnerPulsar } from "../components/SpinnerPulsar";
-import { CloseButton } from "react-bootstrap";
+// import { SpinnerPulsar } from "../components/SpinnerPulsar";
+// import { CloseButton } from "react-bootstrap";
 import { LanguageToggler } from "../components/LanguageToggler.jsx";
 import { AppContext } from '../store/appContext';
 
@@ -26,13 +27,7 @@ export const Gallery = () => {
     const apiBaseUrl = 'https://app.raimundodelrio.cl';
 
     useEffect(() => {
-        fetch(`${apiBaseUrl}/photos_from_${str}`, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include'
-        })
+        fetch(`${apiBaseUrl}/photos_from_${str}`)
             .then((response) => response.json())
             .then((result) => {
                 setGalleryImages(result.gallery_photos);
@@ -53,7 +48,7 @@ export const Gallery = () => {
             rapanui: store.language === 'es' ? 'Rapa Nui' : "Eastern Island",
             patagonia: "Patagonia",
             spain: store.language === 'es' ? 'España' : "Spain",
-            england: store.language === 'es' ? 'England' : "Inglaterra",
+            england: store.language === 'es' ? 'Inglaterra' : "England",
             estambul: store.language === 'es' ? 'Estambul' : "Istambul",
             lisboa: store.language === 'es' ? 'Lisboa' : "Lisbon",
             california: "California",
@@ -91,7 +86,7 @@ export const Gallery = () => {
             <section id="galleryView">
                 <Navbar />
                 <LanguageToggler />
-                <header style={{ backgroundImage: `url(${galleryCoverUrl})` }}>
+                <header style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${galleryCoverUrl})` }}>
                     <Link to="/"><MainLogoVectorWhite /></Link>
                     <h1 className="palanquin-dark-bold">{languageContent.titleView}: {styledName}</h1>
                 </header>

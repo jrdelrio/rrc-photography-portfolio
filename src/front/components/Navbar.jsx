@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from '../store/appContext';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "../styles/navbar.css";
 
@@ -8,14 +8,17 @@ const Navbar = () => {
 
     const { store, actions } = useContext(AppContext);
 
+    const location = useLocation();
+    const isHomePage = location.pathname === '/';
+
     const textContent = {
         en: {
-            linkGalleries: 'Galleries',
+            linkGalleries: 'Gallery',
             linkAboutMe: 'About me',
             linkContact: 'Contact'
         },
         es: {
-            linkGalleries: 'Galerías',
+            linkGalleries: 'Galería',
             linkAboutMe: 'Sobre mí',
             linkContact: 'Contacto'
         }
@@ -51,8 +54,11 @@ const Navbar = () => {
     return (
         <>
             <nav className={`main-navbar ${hideNavbar ? 'hidden' : ''} ${navbarResponsive ? 'mobile-navbar' : ''} ${showMobileNavbar ? 'active' : ''}`}>
-                <ul>
+                <ul>{isHomePage ? (
+                    <li><a href="#section-galleries">{languageContent.linkGalleries}</a></li>
+                ) : (
                     <li><Link to="/#section-galleries">{languageContent.linkGalleries}</Link></li>
+                )}
                     <li><Link to="/about">{languageContent.linkAboutMe}</Link></li>
                     <li><Link to="/contact">{languageContent.linkContact}</Link></li>
                 </ul>
@@ -75,7 +81,7 @@ const Navbar = () => {
                 <line x1="4" x2="20" y1="6" y2="6" />
                 <line x1="4" x2="20" y1="18" y2="18" />
             </svg>
-            
+
         </>
     )
 }

@@ -1,6 +1,6 @@
 import "../styles/main-logo.css";
 
-export const MainLogoVectorWhite = ({styles}) => {
+export const MainLogoVectorWhite = ({ styles }) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsv="https://svgstorm.com"
             viewBox="0 0 3399 753"

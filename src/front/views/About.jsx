@@ -13,6 +13,32 @@ import "../styles/about.css";
 export const About = () => {
     const { store, actions } = useContext(AppContext);
 
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1100);
+    const [isLandscape, setIsLandscape] = useState(
+        window.innerWidth > window.innerHeight
+    );
+    const [isMobile, setIsMobile] = useState(false);
+
+    const detectMobileDevice = () => {
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            const isLandscapeNow = window.innerWidth > window.innerHeight;
+            setIsLandscape(isLandscapeNow);
+        };
+
+        setIsMobile(detectMobileDevice());
+        handleResize();
+
+        // Escuchar cambios en el tamaño de la ventana
+        window.addEventListener("resize", handleResize);
+
+        // Limpieza del evento al desmontar el componente
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const textContent = {
         es: {
             title: "Sobre mí",
@@ -33,7 +59,6 @@ export const About = () => {
     }
 
     const languageContent = textContent[store.language] || textContent.en;
-    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1100);
 
     useEffect(() => {
         const handleResize = () => {
@@ -46,12 +71,20 @@ export const About = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const landscapeStyles = {
+        header: { height: "45vh" },
+        logo: { top: 0 },
+    }
+
+    console.log('landscape', isLandscape)
+    console.log('mobile', isMobile)
+
     return (
         <section id="about-me">
             <Navbar />
             <LanguageToggler />
-            <header>
-                <Link to="/"><MainLogoVectorWhite /></Link>
+            <header style={isLandscape && isMobile ? landscapeStyles.header : {}}>
+                <Link to="/"><MainLogoVectorWhite styles={isLandscape && isMobile ? landscapeStyles.logo : {}} /></Link>
                 <h1 className="palanquin-dark-bold">{languageContent.title}</h1>
             </header>
 
