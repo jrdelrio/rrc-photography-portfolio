@@ -11,9 +11,9 @@ export const SinglePhotoView = ({ photo, photos, closeModal }) => {
     // const [openModal, setOpenModal] = useState(false);
 
     const { store, actions } = useContext(AppContext);
-
-
-
+    const [isLandscape, setIsLandscape] = useState(
+        window.innerWidth > window.innerHeight
+    );
 
     useEffect(() => {
         actions.setShowLanguageToggler(false);
@@ -36,6 +36,21 @@ export const SinglePhotoView = ({ photo, photos, closeModal }) => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, []);
+
+    useEffect(() => {
+            const handleResize = () => {
+                const isLandscapeNow = window.innerWidth > window.innerHeight;
+                setIsLandscape(isLandscapeNow);
+            };
+    
+            handleResize();
+    
+            // Escuchar cambios en el tamaño de la ventana
+            window.addEventListener("resize", handleResize);
+    
+            // Limpieza del evento al desmontar el componente
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? photos.length - 1 : prevIndex - 1));
@@ -69,7 +84,7 @@ export const SinglePhotoView = ({ photo, photos, closeModal }) => {
                         <div className={`carousel-item ${index === currentIndex ? "active" : ""}`}
                             key={index}
                         >
-                            <img src={item.photo_url} className="d-block w-100" alt="..." />
+                            <img src={item.photo_url} className="d-block" alt="..." style={isLandscape ? {height: "100vh"} : {width: "100vh"}} />
                         </div>
                     ))}
                 </div>
