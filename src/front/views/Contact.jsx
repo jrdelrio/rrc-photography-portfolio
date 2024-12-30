@@ -114,6 +114,8 @@ export const Contact = () => {
         const confirmationTemplateParams = {
             from_name: formData.name,
             from_email: formData.email,
+            from_phone: formData.phone,
+            comment: formData.message,
         };
 
         emailjs
