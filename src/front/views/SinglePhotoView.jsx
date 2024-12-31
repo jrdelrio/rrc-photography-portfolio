@@ -84,7 +84,7 @@ export const SinglePhotoView = ({ photo, photos, closeModal }) => {
                         <div className={`carousel-item ${index === currentIndex ? "active" : ""}`}
                             key={index}
                         >
-                            <img src={item.photo_url} className="d-block" alt="..." style={isLandscape ? {height: "100vh"} : {width: "100vh"}} />
+                            <img src={item.photo_url} className="d-block" alt="..." style={isLandscape ? {height: "100vh"} : {width: "100vw"}} />
                         </div>
                     ))}
                 </div>
