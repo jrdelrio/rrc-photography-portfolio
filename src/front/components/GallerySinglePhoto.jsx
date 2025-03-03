@@ -29,7 +29,7 @@ const GallerySinglePhoto = ({ photo, index, str }) => {
 
                 <img
                     src={photo.photo_url}
-                    alt={`Image from ${str}`}
+                    alt={photo.alternative_text}
                     style={{ display: isLoading ? 'none' : 'block' }}
                     onLoad={handleImageLoad}
                 />

@@ -25,6 +25,7 @@ export const Gallery = () => {
 
 
     const apiBaseUrl = 'https://app.raimundodelrio.cl';
+    console.log(`${apiBaseUrl}/photos_from_${str}`)
 
     useEffect(() => {
         fetch(`${apiBaseUrl}/photos_from_${str}`)
@@ -32,6 +33,7 @@ export const Gallery = () => {
             .then((result) => {
                 setGalleryImages(result.gallery_photos);
                 setGalleryCoverUrl(result.cover_photo);
+                console.log(result.gallery_photos);
             })
             .catch((error) => console.error("Error fetching galleries:", error));
     }, []);
@@ -100,6 +102,7 @@ export const Gallery = () => {
                                     index={index}
                                     photo={photo}
                                     str={str}
+                                    alternative_text={photo.alternative_text}
                                 />
                                 {/* </Suspense> */}
                             </div>
