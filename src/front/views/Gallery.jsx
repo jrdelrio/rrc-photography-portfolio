@@ -24,7 +24,7 @@ export const Gallery = () => {
     const { store, actions } = useContext(AppContext);
 
 
-    const apiBaseUrl = 'https://app.raimundodelrio.cl';
+    const apiBaseUrl = 'http://18.228.170.86:5000/api/rrc-photography';
     console.log(`${apiBaseUrl}/photos_from_${str}`)
 
     useEffect(() => {

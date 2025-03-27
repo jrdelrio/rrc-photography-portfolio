@@ -26,20 +26,20 @@ export const Contact = () => {
     };
 
     useEffect(() => {
-            const handleResize = () => {
-                const isLandscapeNow = window.innerWidth > window.innerHeight;
-                setIsLandscape(isLandscapeNow);
-            };
-    
-            setIsMobile(detectMobileDevice());
-            handleResize();
-    
-            // Escuchar cambios en el tamaño de la ventana
-            window.addEventListener("resize", handleResize);
-    
-            // Limpieza del evento al desmontar el componente
-            return () => window.removeEventListener("resize", handleResize);
-        }, []);
+        const handleResize = () => {
+            const isLandscapeNow = window.innerWidth > window.innerHeight;
+            setIsLandscape(isLandscapeNow);
+        };
+
+        setIsMobile(detectMobileDevice());
+        handleResize();
+
+        // Escuchar cambios en el tamaño de la ventana
+        window.addEventListener("resize", handleResize);
+
+        // Limpieza del evento al desmontar el componente
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const [formData, setFormData] = useState(() => {
         // Intentar recuperar los datos del sessionStorage
@@ -55,7 +55,7 @@ export const Contact = () => {
         sessionStorage.setItem('formContacto', JSON.stringify(updatedFormData));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         // Validación de campos requeridos
@@ -82,63 +82,51 @@ export const Contact = () => {
         }
 
         const templateParams = {
-            from_name: formData.name,
-            from_email: formData.email,
-            from_phone: formData.phone,
-            comment: formData.message,
+            fromName: formData.name,
+            fromEmail: formData.email,
+            fromPhone: formData.phone,
+            fromMessage: formData.message,
         };
 
-        // Enviar el formulario usando EmailJS
-        const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-        const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-        const USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
-        const TEMPLATE_CONFIRM_ID = process.env.REACT_APP_EMAILJS_CONFIRMATION_TEMPLATE_ID;
+        try {
+            const [internResponse, thanksResponse] = await Promise.all([
+                fetch('http://18.228.170.86:5000/api/rrc-photography/send-email-thanks-for-contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(templateParams),
+                }),
 
+                fetch('http://18.228.170.86:5000/api/rrc-photography/intern-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(templateParams),
+                })
+            ]);
 
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
-            (result) => {
-                alert("¡Correo enviado correctamente! 👌");
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    message: "",
-                }); // Limpiar el formulario después del envío
-            },
-            (error) => {
-                alert("Ocurrió un error al enviar el correo.");
+            if (internResponse.ok && thanksResponse.ok) {
+                alert(
+                    "Mensaje enviado con éxito ✅. Revisa tu correo para confirmación."
+                );
+            } else {
+                const internError = !internResponse.ok
+                    ? "Error al notificar al equipo"
+                    : "";
+                const thanksError = !thanksResponse.ok
+                    ? "Error al enviar correo de confirmación"
+                    : "";
+                alert(`Hubo un error: ${internError} ${thanksError} ❌`);
             }
-        );
 
-        //email de confirmación
-        const confirmationTemplateParams = {
-            from_name: formData.name,
-            from_email: formData.email,
-            from_phone: formData.phone,
-            comment: formData.message,
-        };
 
-        emailjs
-            .send(
-                SERVICE_ID,
-                TEMPLATE_CONFIRM_ID,
-                confirmationTemplateParams,
-                USER_ID
-            )
-            .then(
-                (result) => {
-                    console.log(
-                        "Correo de confirmación enviado correctamente!",
-                        result.text
-                    );
-                },
-                (error) => {
-                    console.log(
-                        "Error al enviar el correo de confirmación:",
-                        error.text
-                    );
-                }
-            );
+        } catch (error) {
+            console.error("Error al enviar el formulario:", error);
+            alert("Ocurrió un error al enviar el correo.");
+        }
+
     };
 
     const textContent = {
@@ -175,8 +163,8 @@ export const Contact = () => {
     const languageContent = textContent[store.language] || textContent.en;
 
     const landscapeStyles = {
-        header: {height: "45vh"},
-        logo: {top: 0},
+        header: { height: "45vh" },
+        logo: { top: 0 },
     }
 
     const portraitStyles = {
@@ -189,7 +177,7 @@ export const Contact = () => {
             <LanguageToggler />
             <header style={isLandscape && isMobile ? landscapeStyles.header : portraitStyles}>
                 <div className="header-header">
-                    <Link to="/"><MainLogoVectorWhite styles={isLandscape && isMobile ? landscapeStyles.logo : {}}/></Link>
+                    <Link to="/"><MainLogoVectorWhite styles={isLandscape && isMobile ? landscapeStyles.logo : {}} /></Link>
                     <h1 className="palanquin-dark-bold">{languageContent.title}</h1>
                 </div>
             </header>
