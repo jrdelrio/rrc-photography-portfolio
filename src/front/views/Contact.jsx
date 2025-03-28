@@ -96,6 +96,7 @@ export const Contact = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(templateParams),
+                    credentials: "same-origin"
                 }),
 
                 fetch('https://api.chilisites.com/api/rrc-photography/intern-email', {
@@ -104,6 +105,7 @@ export const Contact = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(templateParams),
+                    credentials: "same-origin"
                 })
             ]);
 
