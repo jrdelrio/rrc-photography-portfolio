@@ -24,7 +24,7 @@ export const Gallery = () => {
     const { store, actions } = useContext(AppContext);
 
 
-    const apiBaseUrl = 'https://chilisites.com/api/rrc-photography';
+    const apiBaseUrl = 'https://api.chilisites.com/api/rrc-photography';
     console.log(`${apiBaseUrl}/photos_from_${str}`)
 
     useEffect(() => {
