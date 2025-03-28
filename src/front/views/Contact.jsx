@@ -112,7 +112,8 @@ export const Contact = () => {
             if (internResponse.ok && thanksResponse.ok) {
                 alert(
                     "Mensaje enviado con éxito ✅. Revisa tu correo para confirmación."
-                );
+                )
+                setFormData({ name: "", email: "", phone: "", message: "" });
             } else {
                 const internError = !internResponse.ok
                     ? "Error al notificar al equipo"
