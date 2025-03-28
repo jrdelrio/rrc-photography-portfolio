@@ -90,7 +90,7 @@ export const Contact = () => {
 
         try {
             const [internResponse, thanksResponse] = await Promise.all([
-                fetch('http://18.228.170.86:5000/api/rrc-photography/send-email-thanks-for-contact', {
+                fetch('https://chilisites.com/api/rrc-photography/send-email-thanks-for-contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export const Contact = () => {
                     body: JSON.stringify(templateParams),
                 }),
 
-                fetch('http://18.228.170.86:5000/api/rrc-photography/intern-email', {
+                fetch('https://chilisites.com/api/rrc-photography/intern-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

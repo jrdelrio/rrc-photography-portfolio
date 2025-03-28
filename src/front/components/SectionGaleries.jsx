@@ -7,7 +7,7 @@ export const SectionGalleries = () => {
 
     const [galleries, setGalleries] = useState([]);
     // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const apiBaseUrl = 'http://18.228.170.86:5000/api/rrc-photography';
+    const apiBaseUrl = 'https://chilisites.com/api/rrc-photography';
 
     const { store } = useContext(AppContext);
 

@@ -13,8 +13,7 @@ const HomeCarousel = () => {
 
   const [carouselImages, setCarouselImages] = useState(undefined);
 
-  // const apiBaseUrl = '18.228.170.86:5000/api/rrc-photography';
-  const apiBaseUrl = 'http://18.228.170.86:5000/api/rrc-photography';
+  const apiBaseUrl = 'https://chilisites.com/api/rrc-photography';
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/carrousel`)
