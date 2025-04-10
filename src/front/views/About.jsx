@@ -76,9 +76,6 @@ export const About = () => {
         logo: { top: 0 },
     }
 
-    console.log('landscape', isLandscape)
-    console.log('mobile', isMobile)
-
     return (
         <section id="about-me">
             <Navbar />

@@ -48,7 +48,6 @@ export const Contact = () => {
     });
 
     const handleChange = (event) => {
-        console.log(event.target);
         const { name, value } = event.target;
         const updatedFormData = { ...formData, [name]: value };
         setFormData(updatedFormData);

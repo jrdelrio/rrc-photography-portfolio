@@ -45,7 +45,6 @@ const Navbar = () => {
         setHideNavbar(!hideNavbar);
         setIsRotated(!isRotated);
         setShowMobileNavbar(!showMobileNavbar); // Muestra u oculta el navbar móvil
-        console.log('click en toggle')
     };
 
     const languageContent = textContent[store.language] || textContent.en;
