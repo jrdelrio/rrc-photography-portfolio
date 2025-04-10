@@ -90,45 +90,37 @@ export const Contact = () => {
 
         try {
             const [internResponse, thanksResponse] = await Promise.all([
-                fetch('https://api.chilisites.com/api/rrc-photography/send-email-thanks-for-contact', {
+                fetch('https://gallery-mailing-api.raimundodelrio.cl/send-intern-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(templateParams),
-                    credentials: "same-origin"
                 }),
-
-                fetch('https://api.chilisites.com/api/rrc-photography/intern-email', {
+        
+                fetch('https://gallery-mailing-api.raimundodelrio.cl/send-thanks-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(templateParams),
-                    credentials: "same-origin"
                 })
             ]);
-
+        
             if (internResponse.ok && thanksResponse.ok) {
-                alert(
-                    "Mensaje enviado con éxito ✅. Revisa tu correo para confirmación."
-                )
+                alert("Mensaje enviado con éxito ✅. Revisa tu correo para confirmación.");
                 setFormData({ name: "", email: "", phone: "", message: "" });
+                sessionStorage.removeItem('formContacto');
             } else {
-                const internError = !internResponse.ok
-                    ? "Error al notificar al equipo"
-                    : "";
-                const thanksError = !thanksResponse.ok
-                    ? "Error al enviar correo de confirmación"
-                    : "";
+                const internError = !internResponse.ok ? "Error al notificar a Raimundo" : "";
+                const thanksError = !thanksResponse.ok ? "Error al enviar correo de confirmación" : "";
                 alert(`Hubo un error: ${internError} ${thanksError} ❌`);
             }
-
-
         } catch (error) {
             console.error("Error al enviar el formulario:", error);
             alert("Ocurrió un error al enviar el correo.");
         }
+        
 
     };
 

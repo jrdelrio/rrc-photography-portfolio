@@ -24,3 +24,7 @@ yarn-error.log*
 
 *.pem
 photos_db.db
+/venv
+cloud-sql-proxy
+Pipfile
+src/__pycache__
