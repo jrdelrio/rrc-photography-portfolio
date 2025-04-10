@@ -29,7 +29,6 @@ export const Gallery = () => {
             .then((result) => {
                 setGalleryImages(result.gallery_photos);
                 setGalleryCoverUrl(result.cover_photo);
-                console.log(result.gallery_photos);
             })
             .catch((error) => console.error("Error fetching galleries:", error));
     }, []);
