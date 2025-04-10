@@ -6,15 +6,13 @@ import { AppContext } from "../store/appContext";
 export const SectionGalleries = () => {
 
     const [galleries, setGalleries] = useState([]);
-    // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const apiBaseUrl = 'https://api.chilisites.com/api/rrc-photography';
 
     const { store } = useContext(AppContext);
 
     useEffect(() => {
         const isMediumScreen = window.innerWidth > 500 && window.innerWidth <= 1000;
 
-        fetch(`${apiBaseUrl}/galleries`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/galleries`)
             .then((response) => response.json())
             .then((result) => {
                 if (!isMediumScreen) {
@@ -38,7 +36,7 @@ export const SectionGalleries = () => {
                 }
             })
             .catch((error) => console.error("Error fetching galleries:", error));
-    }, [apiBaseUrl]);
+    }, []);
 
 
 

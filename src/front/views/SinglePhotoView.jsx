@@ -10,7 +10,7 @@ export const SinglePhotoView = ({ photo, photos, closeModal }) => {
     const [currentIndex, setCurrentIndex] = useState(photo.index);
     // const [openModal, setOpenModal] = useState(false);
 
-    const { store, actions } = useContext(AppContext);
+    const { actions } = useContext(AppContext);
     const [isLandscape, setIsLandscape] = useState(
         window.innerWidth > window.innerHeight
     );

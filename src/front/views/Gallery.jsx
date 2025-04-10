@@ -23,12 +23,8 @@ export const Gallery = () => {
 
     const { store, actions } = useContext(AppContext);
 
-
-    const apiBaseUrl = 'https://api.chilisites.com/api/rrc-photography';
-    console.log(`${apiBaseUrl}/photos_from_${str}`)
-
     useEffect(() => {
-        fetch(`${apiBaseUrl}/photos_from_${str}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/photos_from_${str}`)
             .then((response) => response.json())
             .then((result) => {
                 setGalleryImages(result.gallery_photos);

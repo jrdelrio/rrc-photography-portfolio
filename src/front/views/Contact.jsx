@@ -90,7 +90,7 @@ export const Contact = () => {
 
         try {
             const [internResponse, thanksResponse] = await Promise.all([
-                fetch('https://gallery-mailing-api.raimundodelrio.cl/send-intern-email', {
+                fetch(`${process.env.REACT_APP_API_BASE_URL}/send-intern-email`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export const Contact = () => {
                     body: JSON.stringify(templateParams),
                 }),
         
-                fetch('https://gallery-mailing-api.raimundodelrio.cl/send-thanks-email', {
+                fetch(`${process.env.REACT_APP_API_BASE_URL}/send-thanks-email`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 import Home from "./front/views/Home";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext from "./front/store/appContext";
 import { Contact } from "./front/views/Contact";
 import { About } from "./front/views/About";
@@ -53,9 +53,6 @@ const App = () => {
         fontSize: "1.7rem",
         textAlign: "center",
     };
-
-    console.log(isMobile)
-    console.log(navigator.userAgent)
 
     return (
         <BrowserRouter basename={basename}>

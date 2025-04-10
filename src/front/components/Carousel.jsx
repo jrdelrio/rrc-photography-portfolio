@@ -13,14 +13,12 @@ const HomeCarousel = () => {
 
   const [carouselImages, setCarouselImages] = useState(undefined);
 
-  const apiBaseUrl = 'https://api.chilisites.com/api/rrc-photography';
-
   useEffect(() => {
-    fetch(`${apiBaseUrl}/carrousel`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/carrousel`)
       .then((response) => response.json())
       .then((result) => setCarouselImages(result))
       .catch((error) => console.error("Error fetching galleries:", error));
-  }, [apiBaseUrl]);
+  }, []);
 
 
   const noDataViewStyles = {
