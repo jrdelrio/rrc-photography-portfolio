@@ -28,3 +28,4 @@ photos_db.db
 cloud-sql-proxy
 Pipfile
 src/__pycache__
+.env
